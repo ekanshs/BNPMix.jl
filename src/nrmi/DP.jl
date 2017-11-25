@@ -100,7 +100,7 @@ end
 
 function sampleAlpha(dp::DP, clusters::Set{Cluster})
   shape = dp.Ashape + length(clusters)
-  invscale = dp.Ainvscale + log1p(exp(nggp.logU)/dp.tau) 
+  invscale = dp.Ainvscale + log1p(exp(dp.logU)) 
   gamma = Gamma(shape, 1.0/invscale)
   dp.alpha = rand(gamma)
 end
@@ -131,7 +131,7 @@ function drawLogMasses(dp::DP, slice::Float)
     e = rand(Exponential(1.0))
     news = invWInt(dp, e, s, dp.logU)
     if news == Inf break end
-    if (rand() < exp(logLevy(dp, news, dp.logU) - logW(nggp, news, s)))
+    if (rand() < exp(logLevy(dp, news, dp.logU) - logW(dp, news, s)))
       push!(masses, news)
     end
     if length(masses) > maxClusters
