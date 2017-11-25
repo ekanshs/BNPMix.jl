@@ -17,10 +17,6 @@ end
 DP(Ashape::Float, Ainvscale::Float) =
 DP(Ashape, Ainvscale, (Ashape+1.0)/(Ainvscale+1.0), 0.0)
 
-function logLevy{T<:NRMI}(mu::T, mass::Float)
-  logLevy(mu, mass, 0.0) #logLevy(mu, mass, mu.logU) ??
-end
-
 function logLevy(dp::DP, mass::Float, logu::Float)
   logLevy(mass, dp.alpha, 0., 1., logu)
 end
