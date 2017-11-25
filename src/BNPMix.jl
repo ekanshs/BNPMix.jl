@@ -18,6 +18,7 @@ include("xfamily/normalNonConjugateHierarchySampled.jl")
 include("mixture/cluster.jl")
 
 include("nrmi/NGGP.jl")
+include("nrmi/DP.jl")
 
 include("mixture/mixture.jl")
 include("mixture/mixtureNeal8.jl")
