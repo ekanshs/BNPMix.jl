@@ -67,11 +67,7 @@ end
 
 function logMeanTotalMass(alpha::Float, numclusters::Int, logu::Float) # why numclusters ??
   return log(alpha) + (-1.0)*log(1+exp(logu))
-end
 
-function drawLogMass{T<:NRMI}(mu::T, num::Int) # Perhaps want remove this
-  return drawLogMass(mu, num, mu.logU)
-end
 
 function drawLogMass(dp::DP, num::Int, logu::Float)
   return log(rand(Gamma(num,1))) - log(1+exp(logu))
